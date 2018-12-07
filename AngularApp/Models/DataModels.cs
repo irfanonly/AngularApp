@@ -45,6 +45,11 @@ namespace AngularApp.Models
         public DateTime Created_On { get; set; }
     }
 
+    //public class AspNetUser
+    //{
+    //    public string UserName { get; set; }
+    //}
+
     public class DBContext : IdentityDbContext<User>
     {
         public DBContext()
@@ -66,6 +71,8 @@ namespace AngularApp.Models
         public DbSet<todoItem> todos { get; set; }
 
         public DbSet<post> posts { get; set; }
+
+       // public DbSet<AspNetUser> aspNetUsers { get; set; }
 
     }
 

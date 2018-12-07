@@ -34,17 +34,17 @@ namespace AngularApp.Controllers
 
         [HttpGet]
         [Authorize]
-        public List<post> GetUsers()
+        public List<User> GetUsers()
         {
-            string userId = Request.GetOwinContext().Authentication.User.Identity.GetUserId();
+            //string userId = Request.GetOwinContext().Authentication.User.Identity.GetUserId();
 
-            var currentUser = UserManager.FindById(userId);
-            return currentUser.posts;
+            var Users = UserManager.Users.ToList();
+            return Users;
         }
 
         [HttpPost]
         [Authorize]
-        public HttpResponseMessage PostStatus(PostViewModel item)
+        public HttpResponseMessage AddUser(PostViewModel item)
         {
             var modelStateErrors = ModelState.Values.ToList();
 
@@ -99,7 +99,7 @@ namespace AngularApp.Controllers
 
         [HttpPost]
         [Authorize]
-        async public Task<HttpResponseMessage> DeletePost(int id)
+        async public Task<HttpResponseMessage> DeleteUser(int id)
         {
             var item = db.posts.Where(t => t.id == id).FirstOrDefault();
             if (item != null)

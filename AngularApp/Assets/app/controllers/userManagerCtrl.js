@@ -4,7 +4,7 @@
         $scope.getList = function () {
             $http.get('/api/WS_User/GetUsers')
                 .success(function (data, status, headers, config) {
-                    $scope.postList = data;
+                    $scope.userList = data;
                 });
         }
 
@@ -24,14 +24,14 @@
         }
 
         $scope.complete = function (index) {
-            $http.post('/api/WS_User/CompletePost/' + $scope.postList[index].id)
+            $http.post('/api/WS_User/CompletePost/' + $scope.userList[index].id)
                 .success(function (data, status, headers, config) {
                     $scope.getList();
                 });
         }
 
         $scope.delete = function (index) {
-            $http.post('/api/WS_User/DeleteUser/' + $scope.postList[index].id)
+            $http.post('/api/WS_User/DeleteUser/' + $scope.userList[index].id)
                 .success(function (data, status, headers, config) {
                     $scope.getList();
                 });
